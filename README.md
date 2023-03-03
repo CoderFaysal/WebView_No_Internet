@@ -134,6 +134,55 @@ public class AlQuran extends AppCompatActivity {
 }
 ```
 
+## If you add Progressbar then
+## XML :
+
+```
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/prograssbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/pdf_loading"
+        app:lottie_repeatMode="restart"
+        android:layout_marginTop="12dp"
+        />
+
+```
+## webView is Gone
+
+
+# Java :
+```
+
+LottieAnimationView prograssbar;
+prograssbar = findViewById(R.id.prograssbar);
+
+
+
+webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                // If the WebView has finished loading, set the textview to gone
+                prograssbar.setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        // If the WebView is still loading, set the progressbar to visible
+        if (webView.getProgress() < 100) {
+            prograssbar.setVisibility(View.VISIBLE);
+            webView.setVisibility(View.GONE);
+        } else {
+            prograssbar.setVisibility(View.GONE);
+            webView.setVisibility(View.VISIBLE);
+        }
+        
+```
+
 
 
 
